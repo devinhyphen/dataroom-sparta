@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyphen Strategies | Phase 1 Diligence Package — Sparta, MI</title>
+<style>
+  :root {
+    --teal: #087A8C;
+    --teal-dark: #066174;
+    --teal-light: #D9EBEE;
+    --orange: #EC8928;
+    --orange-dark: #C46F1F;
+    --orange-light: #FDE2C0;
+    --navy: #0F172A;
+    --navy-light: #1E293B;
+    --slate: #475569;
+    --slate-light: #64748B;
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-300: #CBD5E1;
+    --gray-400: #94A3B8;
+    --green: #16A34A;
+    --green-light: #D1FAE5;
+    --green-dark: #065F46;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--gray-50);
+    color: var(--navy);
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 28px 32px 36px;
+    border-bottom: 4px solid var(--orange);
+  }
+
+  .header-content { max-width: 1280px; margin: 0 auto; }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .brand-block { display: flex; align-items: center; gap: 14px; }
+
+  .brand-mark {
+    width: 44px; height: 44px;
+    background: var(--teal);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 20px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  .brand-text { line-height: 1.2; }
+  .brand-name { font-size: 17px; font-weight: 700; letter-spacing: 0.3px; }
+  .brand-tagline { font-size: 11px; color: var(--gray-400); font-style: italic; margin-top: 3px; }
+
+  .project-info { text-align: right; }
+  .project-label {
+    font-size: 10px;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .project-address { font-size: 14px; font-weight: 600; color: white; }
+  .project-meta { font-size: 11px; color: var(--gray-400); margin-top: 3px; }
+
+  .title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    color: var(--gray-400);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .verdict-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    background: rgba(22, 163, 74, 0.15);
+    border: 1px solid var(--green);
+    border-radius: 16px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4ADE80;
+  }
+
+  .verdict-pill::before { content: "✓"; }
+
+  /* STATS DASHBOARD */
+  .stats {
+    max-width: 1280px;
+    margin: -18px auto 0;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .stat-card {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--slate-light);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .stat-value.accent { color: var(--teal); }
+  .stat-value.success { color: var(--green); }
+
+  .stat-detail { font-size: 11px; color: var(--slate-light); margin-top: 6px; }
+
+  /* MAIN LAYOUT */
+  .main {
+    max-width: 1280px;
+    margin: 24px auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+  }
+
+  /* TOOLBAR */
+  .toolbar {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 200px;
+    padding: 9px 14px 9px 36px;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    font-size: 13px;
+    background: var(--gray-50)
+       url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>") 12px 50% no-repeat;
+    color: var(--navy);
+    outline: none;
+  }
+
+  .search-box:focus { border-color: var(--teal); background-color: white; }
+
+  .filter-pill {
+    padding: 7px 14px;
+    border: 1px solid var(--gray-300);
+    border-radius: 16px;
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--slate);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .filter-pill:hover { background: var(--gray-100); border-color: var(--gray-400); }
+  .filter-pill.active { background: var(--teal); color: white; border-color: var(--teal); }
+  .filter-pill-count { opacity: 0.6; font-weight: 500; margin-left: 3px; }
+
+  /* TREE */
+  .tree {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .folder { border-bottom: 1px solid var(--gray-200); }
+  .folder:last-child { border-bottom: none; }
+
+  .folder-header {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+
+  .folder-header:hover { background: var(--gray-50); }
+
+  .folder-chevron {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s;
+    color: var(--slate-light);
+    flex-shrink: 0;
+  }
+
+  .folder.open .folder-chevron { transform: rotate(90deg); }
+
+  .folder-emoji {
+    font-size: 18px;
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+  }
+
+  .folder-name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+  }
+
+  .folder-count {
+    font-size: 11px;
+    color: var(--slate-light);
+    font-weight: 500;
+    background: var(--gray-100);
+    padding: 3px 9px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .folder-docs {
+    display: none;
+    background: var(--gray-50);
+  }
+
+  .folder.open .folder-docs { display: block; }
+
+  .doc {
+    padding: 11px 18px 11px 54px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--gray-200);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+
+  .doc:hover { background: var(--gray-100); }
+  .doc.selected { background: var(--teal-light); border-left: 3px solid var(--teal); padding-left: 51px; }
+
+  .doc-format {
+    width: 30px;
+    height: 18px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+  }
+
+  .doc-format.pdf { background: #DC2626; }
+  .doc-format.docx { background: #2563EB; }
+  .doc-format.xlsx { background: #16A34A; }
+  .doc-format.png { background: #9333EA; }
+  .doc-format.pptx { background: #EA580C; }
+  .doc-format.url { background: var(--slate); }
+
+  .doc-name {
+    flex: 1;
+    font-size: 13px;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .doc-star { color: var(--orange); font-size: 13px; margin-right: 4px; }
+
+  .doc-status {
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .status-complete { background: var(--green-light); color: var(--green-dark); }
+  .status-progress { background: var(--orange-light); color: var(--orange-dark); }
+
+  /* DETAIL PANEL */
+  .detail {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 0;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .detail-empty {
+    text-align: center;
+    padding: 80px 24px;
+    color: var(--gray-400);
+  }
+
+  .detail-empty-icon { font-size: 44px; margin-bottom: 14px; opacity: 0.5; }
+  .detail-empty-text { font-size: 14px; color: var(--slate-light); }
+  .detail-empty-hint { font-size: 12px; color: var(--gray-400); margin-top: 6px; font-style: italic; }
+
+  .detail-content { padding: 24px; }
+
+  .detail-header {
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+  }
+
+  .detail-breadcrumb {
+    font-size: 10px;
+    color: var(--orange);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+  }
+
+  .detail-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .detail-status-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+
+  .star-tag {
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--orange-light);
+    color: var(--orange-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 13px;
+    gap: 16px;
+  }
+
+  .detail-row:last-of-type { border-bottom: none; }
+
+  .detail-label {
+    color: var(--slate-light);
+    font-weight: 500;
+    flex-shrink: 0;
+    min-width: 90px;
+  }
+
+  .detail-value {
+    color: var(--navy);
+    font-weight: 600;
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .detail-description {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: var(--gray-50);
+    border-radius: 6px;
+    border-left: 3px solid var(--teal);
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  .detail-actions { margin-top: 18px; display: flex; gap: 8px; }
+
+  .btn {
+    flex: 1;
+    padding: 9px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--gray-300);
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    transition: all 0.15s;
+  }
+
+  .btn:hover { background: var(--gray-100); border-color: var(--gray-400); }
+
+  .btn-primary { background: var(--teal); color: white; border-color: var(--teal); }
+  .btn-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); }
+
+  /* PHASE 2 CALL-TO-ACTION */
+  .phase2-cta {
+    max-width: 1280px;
+    margin: 16px auto 0;
+    padding: 0 32px;
+  }
+
+  .phase2-cta-inner {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 12px rgba(8, 122, 140, 0.18);
+  }
+
+  .phase2-cta-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .phase2-cta-content { flex: 1; }
+  .phase2-cta-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .phase2-cta-text { font-size: 13px; color: rgba(255, 255, 255, 0.85); line-height: 1.5; }
+
+  /* FOOTER */
+  .footer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 32px 40px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-400);
+    line-height: 1.7;
+  }
+
+  .footer-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--orange);
+    margin: 0 auto 16px;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 1024px) {
+    .main { grid-template-columns: 1fr; }
+    .detail { position: static; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .header { padding: 20px 18px; }
+    .stats, .main, .footer, .phase2-cta { padding-left: 18px; padding-right: 18px; }
+    .title { font-size: 22px; }
+    .header-top { flex-direction: column; align-items: flex-start; }
+    .project-info { text-align: left; }
+  }
+
+  .detail::-webkit-scrollbar { width: 6px; }
+  .detail::-webkit-scrollbar-track { background: var(--gray-50); }
+  .detail::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+  .detail::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-content">
+    <div class="header-top">
+      <div class="brand-block">
+        <div class="brand-mark">H</div>
+        <div class="brand-text">
+          <div class="brand-name">HYPHEN STRATEGIES</div>
+          <div class="brand-tagline">Hyperscale Site Selection &amp; Advisory</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-label">Site</div>
+        <div class="project-address">2380–2500 13 Mile Rd NW, Sparta, MI 49345</div>
+        <div class="project-meta">Kent County • 121.86 ac • PUD zoning</div>
+      </div>
+    </div>
+    <div class="title">Phase 1 Diligence Package</div>
+    <div class="subtitle">Hyphen Strategies deliverable set — ready for hyperscale buyer review</div>
+    <div class="verdict-pill">VIABLE WITH CONDITIONS &nbsp;—&nbsp; Tier C target, 200–325 MW</div>
+  </div>
+</div>
+
+<!-- STATS DASHBOARD -->
+<div class="stats" id="stats"></div>
+
+<!-- MAIN -->
+<div class="main">
+  <div>
+    <div class="toolbar">
+      <input class="search-box" type="text" placeholder="Search documents..." id="search">
+      <button class="filter-pill active" data-filter="all">All <span class="filter-pill-count" id="cnt-all"></span></button>
+      <button class="filter-pill" data-filter="starred">★ Hyphen Authored <span class="filter-pill-count" id="cnt-starred"></span></button>
+    </div>
+    <div class="tree" id="tree"></div>
+  </div>
+
+  <div class="detail" id="detail">
+    <div class="detail-empty">
+      <div class="detail-empty-icon">📂</div>
+      <div class="detail-empty-text">Select a document to view details</div>
+      <div class="detail-empty-hint">Description, source, and methodology notes</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 CALL-TO-ACTION -->
+<div class="phase2-cta">
+  <div class="phase2-cta-inner">
+    <div class="phase2-cta-icon">→</div>
+    <div class="phase2-cta-content">
+      <div class="phase2-cta-title">Phase 2 deliverables available with full engagement</div>
+      <div class="phase2-cta-text">
+        Wetland delineation, METC interconnection study, MISO queue entry, ALTA survey, geotechnical investigation,
+        TIF feasibility, hyperscale buyer pro forma, and the complete Phase 2 critical path are scoped and ready for
+        kick-off. Contact Devin Hillsdon-Smith at Hyphen Strategies to engage.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-divider"></div>
+  HYPHEN STRATEGIES, LLC &nbsp;·&nbsp; 708 Adams St Suite 215, Carmel, IN 46032 &nbsp;·&nbsp; hyphenstrategiesllc.com<br>
+  Devin Hillsdon-Smith, Principal &nbsp;·&nbsp; Industrial Site Selection &amp; Hyperscale Advisory<br><br>
+  © 2026 Hyphen Strategies, LLC &nbsp;·&nbsp; This is the Phase 1 deliverable package &nbsp;·&nbsp; Subject to mutual NDA
+</div>
+
+<script>
+/* ============================================================
+   DATA ROOM STRUCTURE — Phase 1 only
+   Filtered to show only deliverables ready for buyer review.
+   ============================================================ */
+
+const dataRoomFull = [
+  {
+    id: '00',
+    name: '00 — Cover & Process',
+    emoji: '📋',
+    documents: [
+      { name: 'Data Room Index & Disclaimer', status: 'complete', format: 'pdf', phase: 1, starred: false, owner: 'Hyphen Strategies', updated: '2026-05-12', description: 'Master index of all data room contents with disclaimer regarding the indicative nature of Phase 1 deliverables.' },
+      { name: 'Mutual NDA (Buyer / Hyphen)', status: 'complete', format: 'pdf', phase: 1, starred: false, owner: 'Hyphen Strategies', updated: '2026-04-01', description: 'Mutual non-disclosure agreement required prior to data room access. Standard form with 2-year term.' },
+      { name: 'Hyphen Engagement Letter', status: 'complete', format: 'pdf', phase: 1, starred: false, owner: 'Hyphen Strategies', updated: '2026-03-15', description: 'Engagement scope and fee structure for Phase 1 / Phase 2 advisory services.' }
+    ]
+  },
+
+  {
+    id: '01',
+    name: '01 — Property & Title',
+    emoji: '🏞️',
+    documents: [
+      { name: 'Offering Memorandum (Advantage CRE)', status: 'complete', format: 'pdf', phase: 1, starred: false, owner: 'Advantage Commercial Real Estate', updated: '2025-11-01', description: 'Seller\'s 12-page Offering Memorandum. Primary source for utility distances (page 7), concept overlay (page 8), and listing broker contacts. Brokers: David Rapp (616-325-9235) and Trent Wieringa SIOR (616-481-3868).' }
+    ]
+  },
+
+  {
+    id: '02',
+    name: '02 — Zoning & Entitlements',
+    emoji: '🏛️',
+    documents: [
+      { name: 'Village of Sparta PUD Agreement', status: 'progress', format: 'pdf', phase: 1, starred: false, owner: 'Village of Sparta', updated: '2026-05-08', description: 'Village of Sparta Planned Unit Development zoning ordinance (Sec. 82-331 et seq.). Both parcels are PUD-zoned per OM page 3. Allows residential, commercial, light and heavy industrial uses. PUD agreement amendment may be required for data center use.' },
+      { name: 'Village of Sparta Zoning Map (2015)', status: 'complete', format: 'pdf', phase: 1, starred: false, owner: 'Village of Sparta', updated: '2015-01-01', description: 'Official 2015 zoning map showing PUD designation for subject parcels.' }
+    ]
+  },
+
+  {
+    id: '03',
+    name: '03 — Power & Electric',
+    emoji: '⚡',
+    documents: [
+      { name: 'Hyphen Tier 1 Power Assessment (v3)', status: 'complete', format: 'docx', phase: 1, starred: true, owner: 'Hyphen Strategies', updated: '2026-05-12', description: '17-page Phase 1 desktop assessment. Headline verdict: VIABLE WITH CONDITIONS, Tier C target (200-325 MW). OM-corrected cost envelope: $46-137M. 345 kV is 1.7 mi north per OM page 7 — meaningfully closer than typical hyperscale candidates.' },
+      { name: 'Hyphen Power Workbook (Tier 1)', status: 'complete', format: 'xlsx', phase: 1, starred: true, owner: 'Hyphen Strategies', updated: '2026-05-12', description: '7-tab Excel workbook (73 formulas) supporting the Tier 1 Power Assessment. Tier A/B/C cost-to-energize line items, capacity tier framework, OM-corrected unit costs.' },
+      { name: 'Hyphen Power Assessment (PDF render)', status: 'complete', format: 'pdf', phase: 1, starred: true, owner: 'Hyphen Strategies', updated: '2026-05-12', description: 'PDF version of Tier 1 Power Assessment for buyer distribution.' },
+      { name: 'MPSC Case U-21859 (Hyperscale Tariff)', status: 'complete', format: 'url', phase: 1, starred: false, owner: 'MI Public Service Commission', updated: '2025-11-15', description: 'MPSC approval of CMS large-load tariff (Nov 2025). 15-year minimum contract, 80% minimum billing demand, customer pays incremental infrastructure, ramp-up provisions, exit fees.' }
+    ]
+  },
+
+  {
+    id: '04',
+    name: '04 — Fiber & Telecom',
+    emoji: '🌐',
+    documents: [
+      { name: 'Hyphen Phase 1 Fiber Study', status: 'complete', format: 'docx', phase: 1, starred: true, owner: 'Hyphen Strategies', updated: '2026-05-10', description: 'Phase 1 fiber connectivity study. 7-carrier diverse path strategy. ~4.1 ms RTT to Chicago. MMR-A (N entry) + MMR-B (E entry) diverse fiber architecture confirmed.' },
+      { name: 'Hyphen Fiber Workbook', status: 'complete', format: 'xlsx', phase: 1, starred: true, owner: 'Hyphen Strategies', updated: '2026-05-10', description: '6-tab Excel workbook (92 formulas). Carrier inventory, latency matrices to Chi/Det/Cle/Col, cost-to-light envelope, MMR siting scoring matrix.' },
+      { name: 'Hyphen Fiber Study (PDF render)', status: 'complete', format: 'pdf', phase: 1, starred: true, owner: 'Hyphen Strategies', updated: '2026-05-10', description: 'PDF version of Fiber Study for buyer distribution.' }
+    ]
+  },
+
+  {
+    id: '07',
+    name: '07 — Civil & Test Fit',
+    emoji: '⛰️',
+    documents: [
+      { name: 'Hyphen Data Center Test Fit', status: 'complete', format: 'png', phase: 1, starred: true, owner: 'Hyphen Strategies', updated: '2026-05-12', description: 'Phase 1 conceptual test fit. 4 × 250K SF single-story data halls hugging west property line, central cooling plant, NE substation, SE wetland buffer, SW laydown. 300 MW Tier C target. 100 ft setbacks.' },
+      { name: 'Hyphen Test Fit (PDF render)', status: 'complete', format: 'pdf', phase: 1, starred: true, owner: 'Hyphen Strategies', updated: '2026-05-12', description: 'PDF version of test fit for buyer distribution and Phase 2 civil/architect handoff.' }
+    ]
+  },
+
+  {
+    id: '08',
+    name: '08 — Tax & Incentives',
+    emoji: '💰',
+    documents: [
+      { name: 'Property Tax History (2020-2024)', status: 'progress', format: 'xlsx', phase: 1, starred: false, owner: 'Hyphen Strategies', updated: '2026-05-10', description: 'Tax history compilation for both parcels. 2024 assessed values: $218,600 (Parcel 1) + $231,800 (Parcel 2) = $450,400 total. Tax rate per Village of Sparta + Kent County mil levy.' }
+    ]
+  },
+
+  {
+    id: '10',
+    name: '10 — Legal & Commercial',
+    emoji: '⚖️',
+    documents: [
+      { name: 'LOI Template (Hyperscale Buyer)', status: 'progress', format: 'docx', phase: 1, starred: false, owner: 'Hyphen Strategies', updated: '2026-05-09', description: 'Letter of Intent template suited to hyperscale buyer engagement. Key terms: purchase price, contingency periods, exclusivity, due diligence access.' }
+    ]
+  },
+
+  {
+    id: '11',
+    name: '11 — Construction & Schedule',
+    emoji: '🏗️',
+    documents: [
+      { name: 'Conceptual Schedule (Tier C)', status: 'complete', format: 'xlsx', phase: 1, starred: false, owner: 'Hyphen Strategies', updated: '2026-05-12', description: '48-84 month critical path schedule from Tier 1 Power Assessment Tab 6. METC interconnection feasibility → MISO queue (5-7 yr typical) → substation construction → data hall construction.' }
+    ]
+  },
+
+  {
+    id: '12',
+    name: '12 — Financial Pro Forma',
+    emoji: '📊',
+    documents: [
+      { name: 'Land Cost Basis & Asking Price', status: 'complete', format: 'xlsx', phase: 1, starred: false, owner: 'Hyphen Strategies', updated: '2026-04-15', description: 'Land cost basis analysis. LoopNet listing $7,311,600 ($60K/ac) for combined 121.86 ac. Comparable hyperscale-ready land in Kent County trading at $80-150K/ac.' }
+    ]
+  }
+];
+
+// Build dataRoom from Phase 1 documents only (it's already filtered above, but enforce it just in case)
+const dataRoom = dataRoomFull
+  .map(folder => ({ ...folder, documents: folder.documents.filter(d => d.phase === 1) }))
+  .filter(folder => folder.documents.length > 0);
+
+let state = {
+  selectedDoc: null,
+  filter: 'all',
+  search: '',
+  openFolders: new Set(dataRoom.map(f => f.id)) // open everything by default — show off the package
+};
+
+function getStats() {
+  const all = dataRoom.flatMap(f => f.documents);
+  const total = all.length;
+  const complete = all.filter(d => d.status === 'complete').length;
+  const progress = all.filter(d => d.status === 'progress').length;
+  const starred = all.filter(d => d.starred).length;
+  const categoriesCovered = dataRoom.length;
+  return { total, complete, progress, starred, categoriesCovered };
+}
+
+function renderStats() {
+  const s = getStats();
+  const stats = [
+    { label: 'Categories Covered', value: s.categoriesCovered, detail: 'of 13 standard areas', accent: false },
+    { label: 'Documents Available', value: s.total, detail: `${s.complete} ready • ${s.progress} active`, accent: true },
+    { label: 'Hyphen Authored', value: s.starred, detail: '★ Branded deliverables', accent: false },
+    { label: 'Status', value: 'Ready', detail: 'For buyer review under NDA', success: true }
+  ];
+  document.getElementById('stats').innerHTML = stats.map(stat => `
+    <div class="stat-card">
+      <div class="stat-label">${stat.label}</div>
+      <div class="stat-value ${stat.accent ? 'accent' : ''} ${stat.success ? 'success' : ''}">${stat.value}</div>
+      <div class="stat-detail">${stat.detail}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('cnt-all').textContent = `(${s.total})`;
+  document.getElementById('cnt-starred').textContent = `(${s.starred})`;
+}
+
+function statusLabel(s) {
+  return ({ complete: 'Ready', progress: 'In progress' })[s] || 'Pending';
+}
+
+function statusClass(s) {
+  return ({ complete: 'status-complete', progress: 'status-progress' })[s] || 'status-progress';
+}
+
+function matchesFilters(doc) {
+  if (state.filter === 'starred' && !doc.starred) return false;
+  if (state.search) {
+    const q = state.search.toLowerCase();
+    if (!doc.name.toLowerCase().includes(q) &&
+        !(doc.description || '').toLowerCase().includes(q) &&
+        !(doc.owner || '').toLowerCase().includes(q)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function renderTree() {
+  const treeEl = document.getElementById('tree');
+  treeEl.innerHTML = dataRoom.map(folder => {
+    const visibleDocs = folder.documents.filter(matchesFilters);
+    if (visibleDocs.length === 0 && (state.filter !== 'all' || state.search)) {
+      return '';
+    }
+    const totalInFolder = folder.documents.length;
+    const isOpen = state.openFolders.has(folder.id) || state.search || state.filter !== 'all';
+
+    return `
+      <div class="folder ${isOpen ? 'open' : ''}" data-folder="${folder.id}">
+        <div class="folder-header" onclick="toggleFolder('${folder.id}')">
+          <svg class="folder-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 6 15 12 9 18"/>
+          </svg>
+          <span class="folder-emoji">${folder.emoji}</span>
+          <span class="folder-name">${folder.name}</span>
+          <span class="folder-count">${totalInFolder} item${totalInFolder === 1 ? '' : 's'}</span>
+        </div>
+        <div class="folder-docs">
+          ${visibleDocs.map(doc => {
+            const isSelected = state.selectedDoc &&
+                               state.selectedDoc.folderId === folder.id &&
+                               state.selectedDoc.name === doc.name;
+            return `
+              <div class="doc ${isSelected ? 'selected' : ''}" onclick="selectDoc('${folder.id}', ${JSON.stringify(doc.name).replace(/"/g, '&quot;')})">
+                <span class="doc-format ${doc.format}">${doc.format.toUpperCase()}</span>
+                <span class="doc-name">${doc.starred ? '<span class="doc-star">★</span>' : ''}${doc.name}</span>
+                <span class="doc-status ${statusClass(doc.status)}">${statusLabel(doc.status)}</span>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderDetail() {
+  const detailEl = document.getElementById('detail');
+  if (!state.selectedDoc) {
+    detailEl.innerHTML = `
+      <div class="detail-empty">
+        <div class="detail-empty-icon">📂</div>
+        <div class="detail-empty-text">Select a document to view details</div>
+        <div class="detail-empty-hint">Description, source, and methodology notes</div>
+      </div>
+    `;
+    return;
+  }
+  const d = state.selectedDoc;
+  const folder = dataRoom.find(f => f.id === d.folderId);
+  detailEl.innerHTML = `
+    <div class="detail-content">
+      <div class="detail-header">
+        <div class="detail-breadcrumb">${folder.emoji} &nbsp; ${folder.name}</div>
+        <div class="detail-title">${d.starred ? '<span class="doc-star">★</span> ' : ''}${d.name}</div>
+        <div class="detail-status-row">
+          <span class="doc-status ${statusClass(d.status)}">${statusLabel(d.status)}</span>
+          ${d.starred ? '<span class="star-tag">★ Hyphen Authored</span>' : ''}
+        </div>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Format</span>
+        <span class="detail-value">${d.format.toUpperCase()}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Source</span>
+        <span class="detail-value">${d.owner || 'TBD'}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Last Updated</span>
+        <span class="detail-value">${d.updated || '—'}</span>
+      </div>
+      <div class="detail-description">${d.description}</div>
+      <div class="detail-actions">
+        <button class="btn btn-primary">Request access</button>
+        <button class="btn">Email Hyphen</button>
+      </div>
+    </div>
+  `;
+}
+
+function toggleFolder(id) {
+  if (state.openFolders.has(id)) state.openFolders.delete(id);
+  else state.openFolders.add(id);
+  renderTree();
+}
+
+function selectDoc(folderId, docName) {
+  const folder = dataRoom.find(f => f.id === folderId);
+  const doc = folder.documents.find(d => d.name === docName);
+  state.selectedDoc = { ...doc, folderId, folderName: folder.name, folderEmoji: folder.emoji };
+  renderTree();
+  renderDetail();
+}
+
+document.getElementById('search').addEventListener('input', e => {
+  state.search = e.target.value;
+  renderTree();
+});
+
+document.querySelectorAll('.filter-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.filter = btn.dataset.filter;
+    renderTree();
+  });
+});
+
+renderStats();
+renderTree();
+renderDetail();
+
+</script>
+</body>
+</html>
