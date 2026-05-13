@@ -1369,7 +1369,7 @@ document.getElementById('search').addEventListener('input', e => {
   renderTree();
 });
 
-document.querySelectorAll('.filter-pill').forEach(btn => {
+document.querySelectorAll('.filter-pill:not(#editToggle)').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
